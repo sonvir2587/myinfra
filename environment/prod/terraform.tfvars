@@ -83,20 +83,20 @@ vms = {
     nic-name    = "prod_frontend_nic"
     vnet-name   = "prod_network"
     subnet-name = "prod_frontend_subnet"
-    vm-name     = "prod_frontend_vm"
+    vm-name     = "prodfrontendvm"
     location    = "eastus"
     rg-name     = "prod-master"
-    vm_size     = "Standard_F2"
+    vm_size     = "Standard_D2ads_v7"
 
     source_image_reference = {
       publisher = "Canonical"
-      offer     = "0001-com-ubuntu-server-jammy"
-      sku       = "22.04-LTS"
+      offer     = "ubuntu-22_04-lts"
+      sku       = "server"
       version   = "latest"
     }
 
     os_disk = {
-      name                 = "prod_os_disk"
+      name                 = "prodfrontend_os_disk"
       caching              = "ReadWrite"
       storage_account_type = "Standard_LRS"
     }
@@ -112,20 +112,20 @@ vms = {
     nic-name    = "prod_backend_nic"
     vnet-name   = "prod_network"
     subnet-name = "prod_backend_subnet"
-    vm-name     = "prod_backend_vm"
+    vm-name     = "prodbackendvm"
     location    = "eastus"
     rg-name     = "prod-master"
-    vm_size     = "Standard_F2"
+    vm_size     = "Standard_D2ads_v7"
 
     source_image_reference = {
       publisher = "Canonical"
-      offer     = "0001-com-ubuntu-server-jammy"
-      sku       = "22.04-LTS"
+      offer     = "ubuntu-22_04-lts"
+      sku       = "server"
       version   = "latest"
     }
 
     os_disk = {
-      name                 = "prod_os_disk"
+      name                 = "prodbackend_os_disk"
       caching              = "ReadWrite"
       storage_account_type = "Standard_LRS"
     }

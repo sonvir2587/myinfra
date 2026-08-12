@@ -28,18 +28,18 @@ devinfra = {
   
     nic-name    = "dev_frontend_nic"
     subnet-name = "dev_frontend_subnet"
-    vm-name     = "dev_frontend_vm"
-    vm_size     = "Standard_F2"
+    vm-name     = "devfrontendvm"
+    vm_size     = "Standard_D2ads_v7"
 
     source_image_reference = {
       publisher = "Canonical"
-      offer     = "0001-com-ubuntu-server-jammy"
-      sku       = "22.04-LTS"
+      offer     = "ubuntu-22_04-lts"
+      sku       = "server"
       version   = "latest"
     }
 
     os_disk = {
-      name                 = "dev_os_disk"
+      name                 = "devfrontend_os_disk"
       caching              = "ReadWrite"
       storage_account_type = "Standard_LRS"
     }
@@ -54,7 +54,7 @@ devinfra = {
   # vm2 = {
   #   nic-name    = "dev_backend_nic"
   #   subnet-name = "dev_backend_subnet"
-  #   vm-name     = "dev_backend_vm"
+  #   vm-name     = "devbackendvm"
   #   vm_size     = "Standard_F2"
 
   #   source_image_reference = {
