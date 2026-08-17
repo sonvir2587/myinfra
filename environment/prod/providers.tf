@@ -5,13 +5,13 @@ terraform {
       version = "5.0.1"
     }
   }
-  # backend "azurerm" {
-  #   resource_group_name  = "rgmaster"
-  #   storage_account_name = "stgmaster"
-  #   container_name       = "tfstate"
-  #   key                  = "prod.tfstate"
+  backend "azurerm" {
+    resource_group_name  = "aksrg"
+    storage_account_name = "fileshare112233"
+    container_name       = "tfstate"
+    key                  = "prod.tfstate"
 
-  # }
+  }
 }
 
 provider "azurerm" {

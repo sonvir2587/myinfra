@@ -6,7 +6,6 @@ on: workflow_dispatch
   #   - 'features/**'
   #   - 'main'
 
-  # workflow_dispatch
 
 permissions: 
   id-token: write
@@ -18,7 +17,7 @@ jobs:
 
     steps:
     - name: Checkout repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
@@ -28,11 +27,11 @@ jobs:
     - name: Azure Login
       uses: Azure/login@v2.3.0
       with:
-        client-id: ecfd9442-47b8-4cdb-b550-568d5a8d8214
-        tenant-id: e30abb13-e248-442c-b835-29af747e86b6
-        subscription-id: ecf1c36f-8eba-469e-841f-a595c299e914
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-        
+      
     - name: Terraform fmt
       id: fmt
       run: terraform fmt -check
@@ -53,6 +52,6 @@ jobs:
       run: terraform plan
       working-directory: main
       
-    # - name: Terraform Apply
-    #   run: terraform apply -auto-approve
-    #   working-directory: main
+    - name: Terraform Apply
+      run: terraform apply -auto-approve
+      working-directory: main
