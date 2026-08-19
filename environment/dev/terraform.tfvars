@@ -1,7 +1,7 @@
 devinfra = {
   inputs = {
     rg-name    = "dev-master"
-    location   = "eastus"
+    location   = "westus"
     managed_by = "terraform"
     tags = {
       environment = "dev"
