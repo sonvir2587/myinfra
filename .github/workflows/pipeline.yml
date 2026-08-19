@@ -50,6 +50,7 @@ jobs:
       working-directory: environment\prod
 
     - name: Terraform Plan
+      shell: powershell
       run: terraform plan
       working-directory: environment\prod
       
