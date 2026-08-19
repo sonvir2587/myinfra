@@ -37,22 +37,22 @@ jobs:
       id: fmt
       run: terraform fmt -check
       continue-on-error: true
-      working-directory: main
+      working-directory: environment\prod
 
 
 
     - name: Terraform Init
       run: terraform init -input=false 
-      working-directory: main
+      working-directory: environment\prod
 
     - name: Terraform Validate
       run: terraform validate
-      working-directory: main
+      working-directory: environment\prod
 
     - name: Terraform Plan
       run: terraform plan
-      working-directory: main
+      working-directory: environment\prod
       
     # - name: Terraform Apply
     #   run: terraform apply -auto-approve
-    #   working-directory: main
+    #   working-directory: environment\prod
