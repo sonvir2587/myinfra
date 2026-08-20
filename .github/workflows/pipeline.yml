@@ -39,8 +39,6 @@ jobs:
       continue-on-error: true
       working-directory: environment\prod
 
-
-
     - name: Terraform Init
       run: terraform init -input=false 
       working-directory: environment\prod
@@ -56,4 +54,8 @@ jobs:
       
     # - name: Terraform Apply
     #   run: terraform apply -auto-approve
+    #   working-directory: environment\prod
+
+    # - name: Terraform Destroy
+    #   run: terraform destroy -auto-approve
     #   working-directory: environment\prod
