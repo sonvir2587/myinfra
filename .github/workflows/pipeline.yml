@@ -40,7 +40,9 @@ jobs:
       working-directory: environment\prod
 
     - name: Terraform Init
-      run: terraform init -input=false 
+      shell: powershell
+      run: |
+        terraform init -input=false 
       working-directory: environment\prod
 
     - name: Terraform Validate
@@ -48,13 +50,12 @@ jobs:
       working-directory: environment\prod
 
     - name: Terraform Plan
-      shell: powershell
       run: terraform plan
       working-directory: environment\prod
       
     - name: Terraform Apply
       shell: powershell
-      run: 
+      run: |
         terraform plan -out=tfplan
         terraform apply -auto-approve tfplan
       working-directory: environment\prod
