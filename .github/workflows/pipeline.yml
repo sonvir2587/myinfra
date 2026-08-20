@@ -39,6 +39,30 @@ jobs:
       continue-on-error: true
       working-directory: environment\prod
 
+
+    - name: Terraform Diagnostic
+      shell: powershell
+      working-directory: environment\prod
+      run: |
+        Write-Host "===== LOCATION ====="
+        Get-Location
+
+        Write-Host "===== TERRAFORM COMMAND ====="
+        Get-Command terraform | Format-List *
+
+        Write-Host "===== TERRAFORM VERSION ====="
+        terraform version
+
+        Write-Host "===== TERRAFORM FILES ====="
+        Get-ChildItem -Force
+
+        Write-Host "===== TERRAFORM PLAN ====="
+        terraform plan -input=false
+
+        Write-Host "===== EXIT CODE ====="
+        Write-Host $LASTEXITCODE
+
+
     - name: Terraform Init
       shell: powershell
       run: |
