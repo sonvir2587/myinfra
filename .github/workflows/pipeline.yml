@@ -53,7 +53,10 @@ jobs:
       working-directory: environment\prod
       
     - name: Terraform Apply
-      run: terraform apply -auto-approve
+      shell: powershell
+      run: 
+        terraform plan -out=tfplan
+        terraform apply -auto-approve tfplan
       working-directory: environment\prod
 
     # - name: Terraform Destroy
