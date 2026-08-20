@@ -41,51 +41,8 @@ jobs:
 
     - name: Terraform Init
       shell: powershell
-      run: |
-        terraform init -input=false 
+      run: terraform init -input=false 
       working-directory: environment\prod
-
-
-    - name: Terraform Diagnostic
-      shell: powershell
-      working-directory: environment\prod
-      run: |
-        Write-Host "===== LOCATION ====="
-        Get-Location
-
-        Write-Host "===== TERRAFORM COMMAND ====="
-        Get-Command terraform | Format-List *
-
-        Write-Host "===== TERRAFORM VERSION ====="
-        terraform version
-
-        Write-Host "===== TERRAFORM FILES ====="
-        Get-ChildItem -Force
-
-        Write-Host "===== TERRAFORM PLAN ====="
-        terraform plan -input=false
-
-        Write-Host "===== EXIT CODE ====="
-        Write-Host $LASTEXITCODE
-
-    - name: Terraform Binary Check
-      shell: powershell
-      working-directory: environment\prod
-      run: |
-        Write-Host "===== TERRAFORM PATH ====="
-        where.exe terraform
-
-        Write-Host "===== FILE INFO ====="
-        $tf = Get-Command terraform
-        Get-Item $tf.Source | Format-List FullName,Length,LastWriteTime
-
-        Write-Host "===== DIRECT EXECUTION ====="
-        & $tf.Source version
-
-        Write-Host "===== EXIT CODE ====="
-        Write-Host $LASTEXITCODE
-
-
 
     - name: Terraform Validate
       run: terraform validate
