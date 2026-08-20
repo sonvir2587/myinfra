@@ -62,6 +62,23 @@ jobs:
         Write-Host "===== EXIT CODE ====="
         Write-Host $LASTEXITCODE
 
+    - name: Terraform Binary Check
+      shell: powershell
+      working-directory: environment\prod
+      run: |
+        Write-Host "===== TERRAFORM PATH ====="
+        where.exe terraform
+
+        Write-Host "===== FILE INFO ====="
+        $tf = Get-Command terraform
+        Get-Item $tf.Source | Format-List FullName,Length,LastWriteTime
+
+        Write-Host "===== DIRECT EXECUTION ====="
+        & $tf.Source version
+
+        Write-Host "===== EXIT CODE ====="
+        Write-Host $LASTEXITCODE
+
 
     - name: Terraform Init
       shell: powershell
