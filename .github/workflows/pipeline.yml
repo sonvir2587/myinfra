@@ -39,6 +39,12 @@ jobs:
       continue-on-error: true
       working-directory: environment\prod
 
+    - name: Terraform Init
+      shell: powershell
+      run: |
+        terraform init -input=false 
+      working-directory: environment\prod
+
 
     - name: Terraform Diagnostic
       shell: powershell
@@ -80,11 +86,6 @@ jobs:
         Write-Host $LASTEXITCODE
 
 
-    - name: Terraform Init
-      shell: powershell
-      run: |
-        terraform init -input=false 
-      working-directory: environment\prod
 
     - name: Terraform Validate
       run: terraform validate
